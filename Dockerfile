@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update \
-    && apt-get install -y libsm6 libxext6 libxrender-dev
+    && apt-get install -y libsm6 libxext6 libxrender-dev libgl1-mesa-glx
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt /app/
@@ -18,6 +18,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY . /app/
+
+# Expose the port Flask will run on (adjust as needed)
+EXPOSE 8089
+
+# Run the Flask application with Gunicorn
+CMD ["gunicorn", "-b", "0.0.0.0:8089", "app:app"]
+
 
 # Expose the port Flask will run on
 EXPOSE 8089
