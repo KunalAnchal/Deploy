@@ -93,9 +93,9 @@ def process_frame(frame):
         # D = round(D, 2)
         # cvzone.putTextRect(frame,  f"{D} mm", (max(0, x1), max(10, y1)),
         #                    thickness=3, offset=2)
-        cvzone.putTextRect(frame, text, position, thickness=3, offset=2)
+        # cvzone.putTextRect(frame, text, position, thickness=3, offset=2)
 
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 255), 4)
+        # cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 255), 4)
 
         detection_marker = True
 
@@ -139,7 +139,7 @@ def display_frames():
         width = 640
         height = 480
         resized_frame = cv2.resize(processed_frame, (width, height))
-        cv2.imshow('Processed Frame', resized_frame)
+        # cv2.imshow('Processed Frame', resized_frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             stop_thread = True
             break
